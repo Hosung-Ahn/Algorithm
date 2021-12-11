@@ -2,10 +2,7 @@
 using namespace std;
 
 int main() {
-    int num;
+    string s = "abc";
+    cout << s.substr(1) << endl;
 
-    cin >> num;
-    cout << num;
-
-    return 0;
 }
