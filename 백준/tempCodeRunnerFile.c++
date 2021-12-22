@@ -1,2 +1,1 @@
-
-        cout << result << endl;
+0,0,0,1,1
