@@ -1,10 +1,11 @@
 # include <iostream>
+# include <string.h>
 using namespace std;
 
 # define MAX 500
 
 int board[MAX][MAX];
-int dp[MAX][MAX] = {0,};
+int dp[MAX][MAX];
 int m,n;
 
 int dr[] = {-1,0,1,0};
@@ -17,7 +18,7 @@ bool in_range(int r, int c) {
 
 int find_dp(int r, int c) {
     if ( r == m-1 && c == n-1) return 1;
-    if ( dp[r][c] != 0 ) return dp[r][c];
+    if ( dp[r][c] != -1 ) return dp[r][c];
 
     int result = 0;
 
@@ -42,12 +43,9 @@ int main() {
         for (int j = 0; j < n; j++)
             scanf("%d", &board[i][j]);
 
-    cout << find_dp(0,0) << endl;
-
     for (int i = 0; i < m; i++) {
-        for (int j = 0; j < n; j++) {
-            cout << dp[i][j] << " ";
-        }
-        cout << endl;
+        memset(dp[i], -1, sizeof(int)*n);
     }
+
+    cout << find_dp(0,0) << endl;
 }
