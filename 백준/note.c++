@@ -1,18 +1,15 @@
 # include <iostream>
+# include <string>
 # include <vector>
-# include <queue>
 # include <algorithm>
 using namespace std;
 
 int main() {
-    queue<int> q;
-    queue<int> q2;
+    vector<int> v = {1,2,3,4,5};
 
-    q.push(1);
-    
-    swap(q,q2);
+    remove(v.begin(), v.end(), 1);
 
-    cout << q2.front() << endl;
-    cout << q.front() << endl;
-
+    for (int x : v) {
+        cout << x << " ";
+    }
 }
