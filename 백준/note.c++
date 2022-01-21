@@ -2,14 +2,15 @@
 # include <string>
 # include <vector>
 # include <algorithm>
+# include <set>
+# include <queue>
 using namespace std;
 
 int main() {
-    vector<int> v = {1,2,3,4,5};
+    priority_queue<int> pq;
+    priority_queue<int, vector<int>, greater<int> > pq_1;
+    pq_1.push(1);
+    pq_1.push(2);
 
-    remove(v.begin(), v.end(), 1);
-
-    for (int x : v) {
-        cout << x << " ";
-    }
+    cout << pq_1.top();
 }
