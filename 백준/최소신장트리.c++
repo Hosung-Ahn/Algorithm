@@ -30,41 +30,16 @@ class Edge {
 public:
     int node[2];
     int distance;
-    Edge(int a, int b, int distance) {
+    Edge(int s, int e, int distance) {
         this->node[0] = a;
         this->node[1] = b;
         this->distance = distance;
     }
+
+    bool operator < (Edge &edge) {
+        return this->distance < edge.distance;
+    }
 };
 
-bool cmp(const Edge &l, const Edge &r) {
-    return l.distance < r.distance;
-}
 
-int main() {
-    int V,E; cin >> V >> E;
-    vector<Edge> edges;
-
-    for (int i = 0; i < E; i++){
-        int s,e,d; scanf("%d %d %d", &s, &e, &d);
-        edges.push_back(Edge(s,e,d));
-    }
-    
-    sort(edges.begin(), edges.end(), cmp);
-
-    int set[V];
-    for (int i = 0; i < V; i++)
-        set[i] = i;
-
-    int sum = 0;
-
-    for (int i = 0; i < edges.size(); i++) {
-        if (!find(set, edges[i].node[0] - 1, edges[i].node[1] -1)) {
-            sum += edges[i].distance;
-            union_parent(set, edges[i].node[0] - 1, edges[i].node[1] -1);
-        }
-    }
-
-    cout << sum;
-}
 

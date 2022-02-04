@@ -1,9 +1,12 @@
 # include <iostream>
-# include <algorithm>
-# include <vector>
 using namespace std;
 
 int main() { 
-    vector<int> v = {1,2,3,4};
-    sort(v.begin(), v.end());
+    cout << "첫번째 숫자를 입력하세요" << endl;
+    int x,y; 
+    cin >> x;
+    cout << "두번째 숫자를 입력하세여" << endl;
+    cin >> y;
+
+    cout << "두 숫자의 합은 " << x + y << "입니다" << endl; 
 }
