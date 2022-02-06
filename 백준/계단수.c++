@@ -2,52 +2,44 @@
 # include <string.h>
 using namespace std;
 
-# define MAX 101
 # define MOD 1000000000
+# define END (1 << 10)
+int dp[101][10][END];
+int N;
 
-int dp[MAX][10];
-bool check[10] = {0,};
-int N; 
+int find_dp(int n, int k, int visited) {
+    if (k < 0 || k > 9) return 0;
 
-int all_used() {
-    for (int n = 0; n < 10; n++) {
-        if (!check[n]) return false;
+    if (n == N) {
+        if (visited == END-1) return 1;
+        return 0;
     }
-    return true;
-}
 
-int find_dp(int nst, int n) {
-    if (n < 0 || n > 10) return 0;
-    if (nst > N) {
-        cout << "base case!~" << endl;
-        if (all_used()) return 1;
-        else return 0;
-    }
-    // if (dp[nst][n] != -1) return dp[nst][n];
+    if (dp[n][k][visited] != -1) return dp[n][k][visited];
 
-    check[n] = true;
-    cout << nst << " " << n << endl;
-    int result = find_dp(nst+1, n+1) + find_dp(nst+1, n-1);
-    check[n] = false;
+    int result = find_dp(n+1, k-1, visited | 1 << (k-1)) 
+                + find_dp(n+1, k+1, visited | 1 << (k+1));
 
-    dp[nst][n] = result;
+    result %= MOD;
+    dp[n][k][visited] = result;
     return result;
-
 }
 
 int main() {
+
     cin >> N;
 
-    for (int i = 0; i < MAX; i++)
-        memset(dp[i], -1, sizeof(int)*10);
+    for (int i = 0; i < 101; i++) {
+        for (int j = 0; j < 10; j++) {
+            memset(dp[i][j], -1, sizeof(int)*(END));
+        }
+    }
 
     int result = 0;
-
-    for (int first_num = 1; first_num < 10; first_num++) {
-        result += find_dp(1, first_num);
+    for (int i = 1; i < 10; i++) {
+        result += find_dp(1, i, 1 << i);
+        result %= MOD;
     }
-    cout << result << endl;
 
-    
-
+    cout << result;
 }
