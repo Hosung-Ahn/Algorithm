@@ -5,12 +5,7 @@
 using namespace std;
 
 int main() {
-    int x = 1 << 1;
-    int y = 1 << 0;
-
-    cout << x << endl;
-    cout << y << endl;
-
-    int z = x | y;
-    cout << z << endl;
+    string s = "123";
+    cout << s.substr(0,s.size()-1) << endl; 
+    cout << s << endl;
 }
