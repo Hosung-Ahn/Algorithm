@@ -5,7 +5,15 @@
 using namespace std;
 
 int main() {
-    string s = "123";
-    cout << s.substr(0,s.size()-1) << endl; 
-    cout << s << endl;
+    vector<int> arr;
+    for (int i = 1; i <= 4; i++)
+        arr.push_back(i);
+
+    
+    vector<int>::iterator iter1, iter2;
+    iter1 = lower_bound(arr.begin(), arr.end(), 3);
+    iter2 = arr.begin();
+
+    cout << iter1 - iter2;
+
 }
