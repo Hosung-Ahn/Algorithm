@@ -7,7 +7,6 @@ using namespace std;
 int arr[MAX] = {0,};
 int cnt[MAX] = {0,};
 int result[MAX];
-int main() {
     memset(result, -1, sizeof(int)*MAX);
 
     int N; cin >> N;
