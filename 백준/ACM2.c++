@@ -50,7 +50,7 @@ int main(){
     for (int t = 0; t < T; t++) { 
         cin >> n >> m;
         vector<vector<int>> dist(n+1);
-
+        
         for (int i = 1; i <= n; i++) {
             cin >> x;
             times[i] = x;
