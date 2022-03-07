@@ -1,1 +1,1 @@
-((tmp*tmp) % mod) * n
+
