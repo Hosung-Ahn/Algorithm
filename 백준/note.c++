@@ -5,15 +5,14 @@
 using namespace std;
 
 int main() {
-    vector<int> arr;
-    for (int i = 1; i <= 4; i++)
-        arr.push_back(i);
+    vector<pair<int,int>> vec;
+    vec.push_back({3,4});
+    vec.push_back({1,5});
 
-    
-    vector<int>::iterator iter1, iter2;
-    iter1 = lower_bound(arr.begin(), arr.end(), 3);
-    iter2 = arr.begin();
+    sort(vec.begin(), vec.end());
 
-    cout << iter1 - iter2;
+    for (pair<int,int> p : vec) {
+        cout << p.first << " " << p.second << endl;
+    }
 
 }

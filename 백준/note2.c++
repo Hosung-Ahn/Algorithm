@@ -2,5 +2,6 @@
 using namespace std;
 
 int main() { 
-    cout << 0 % 3;
+    int a = 1;
+    
 }
