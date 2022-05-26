@@ -4,9 +4,8 @@
 using namespace std;
 
 int main() {
-    string s = "7+35+24";
-    int idx;
-    idx = s.find('+', idx);
-    cout << s.substr() << endl;
-    cout << s;
+    string s1,s2;
+    cin >> s1 >> s2;
+    cout << s1 << endl;
+    cout << s2 << endl;
 }
