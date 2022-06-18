@@ -1,25 +1,17 @@
 #include <iostream>
+#include <set>
 using namespace std;
 
-struct Node {
-    int x;
-    Node(int x) : x(x) { }
-
-    Node& operator++(int) {
-        x++;
-        return *this;
-    }
-};
 
 int main() {
-    Node node(2);
-    Node node2 = node++;
-    
-    cout << node.x << endl;
-    cout << node2.x << endl;
+    set<int> s;
+    s.insert(-5);
+    auto a = s.begin();
+    s.insert(-5);
+    s.insert(-5);
+    s.insert(-5);
+    cout << *a << endl;
+    a--;
+    cout << *a << endl;
 
-    node.x = 5;
-
-    cout << node.x << endl;
-    cout << node2.x << endl;
 }
