@@ -30,6 +30,4 @@ int main() {
         string s; cin >> s;
         cout << is_falin_all(s) << "\n";
     }
-
-    // cout << is_falin_all("comwwtmoc");
 }
