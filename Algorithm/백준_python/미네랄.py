@@ -1,11 +1,13 @@
 import sys
 from queue import Queue
+
 input = sys.stdin.readline
 
 R,C = map(int, input().split())
 board = []
 for _ in range(R) :
     s = list(input())
+    s.pop()
     board.append(s)
     
 N = int(input())
@@ -50,16 +52,14 @@ def fall() :
         local_visited = [ [False for _ in range(C)] for _ in range(R) ]
         
         def tmp_dist(r,c) :
+            ret = 0
             for nr in range(r+1,R) :
                 if local_visited[nr][c] : return 1000
-                if board[nr][c] == 'x' : break
-            ret = 0
-            while(r < R-1 and board[r+1][c] == '.') :
-                r += 1
-                ret += 1
+                if board[nr][c] == 'x' : return ret
+                ret+=1
             return ret
     
-        ret = 1000
+        dist = 1000
         q = Queue()
         q.put([r,c])
         local_visited[r][c] = True
@@ -73,42 +73,24 @@ def fall() :
                 local_visited[nr][nc] = True
                 q.put([nr,nc])
                 
-        for r in range(R) : 
-            for c in range(C) :
-                if local_visited[r][c] :
-                    ret = min(ret, tmp_dist(r,c))
-        return ret
-    
-    def move(r,c, dist) :
-        copy_board = [[False for _ in range(C)] for _ in range(R)]
-        local_visited = [ [False for _ in range(C)] for _ in range(R) ]
-        q = Queue()
-        q.put([r,c])
-        local_visited[r][c] = True
-        while(not q.empty()) :
-            cr,cc = q.get()
-            board[cr][cc] = '.'
-            copy_board[cr+dist][cc] = True
-            for i in range(4) :
-                nr = cr + dr[i]
-                nc = cc + dc[i]
-                if not in_range(nr, nc) or local_visited[nr][nc] or board[nr][nc] == '.':
-                    continue
-                local_visited[nr][nc] = True
-                q.put([nr,nc])
-                
-        for r in range(R) :
-            for c in range(C) :
-                if copy_board[r][c] :
-                    board[r][c] = 'x'
+        for cr in range(R) : 
+            for cc in range(C) :
+                if local_visited[cr][cc] :
+                    dist = min(dist, tmp_dist(cr,cc))
+                    
+        for cr in range(R-1,-1,-1) :
+            for cc in range(C-1,-1,-1) :
+                if local_visited[cr][cc] :
+                    board[cr][cc] = '.'
+                    board[cr+dist][cc] = 'x'
+        
     
     for r in range(R) :
         for c in range(C) :
             if visited[r][c] or board[r][c] == '.' : 
                 continue
             if is_air(r,c) :
-                dist = cal_dist(r,c)
-                move(r,c,dist)
+                cal_dist(r,c)
                 return
             
 d = False
@@ -118,5 +100,5 @@ for h in h_lst :
     d = not d
     
 for s in board :
-    print(''.join(s), end = '')
+    print(''.join(s))
                     
