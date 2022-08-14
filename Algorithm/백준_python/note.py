@@ -19,5 +19,5 @@ for i in range(n) :
             
 for i in range(1, h+1) :
     for j in range(1, w+1) :
-        print(m[i][j], end='')
+        print(m[i][j], end=' ')
     print()

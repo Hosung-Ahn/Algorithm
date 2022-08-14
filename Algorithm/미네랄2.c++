@@ -65,7 +65,7 @@ int tmp_dist(int r, int c) {
     return ret;
 }
 
-int cal_dist(int r, int c) {
+void cal_dist(int r, int c) {
     for(int i=0;i<MAX;i++) memset(on_air[i],0,MAX*sizeof(bool));
     int dist = 1000;
 

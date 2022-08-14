@@ -4,13 +4,10 @@
 # include <cmath>
 using namespace std;
 
-int main() {
-    vector<int> a,b;
-    for (int i = 0; i < 3; i++) {
-        a.push_back(i);
-        b.push_back(i);
-    }
-    b.push_back(3);
+int f() {
+    cout << "hello";
+}
 
-    cout << (a == b); 
+int main() {
+    f();
 }
