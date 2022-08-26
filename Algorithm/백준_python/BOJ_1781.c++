@@ -29,7 +29,7 @@ void solve() {
             }
         }
     }
-    int ans = 0; 
+    int ans = 0;
     while(!pq.empty()) {
         ans += -pq.top();
         pq.pop();
