@@ -62,7 +62,6 @@ bool in_range(int r, int c) {
 
 bool is_melt(int r, int c) {
     int cnt = 0;
-
     for(int i=0;i<4;i++) {
         int nr = r + dr[i];
         int nc = c + dc[i];
@@ -139,5 +138,4 @@ int main() {
         Qs[i] = (int)pow(2,q);
     }
     solve();
-
 }
