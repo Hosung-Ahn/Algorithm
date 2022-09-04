@@ -7,7 +7,7 @@
 using namespace std;
 vector<string> board;
 int R,C,MAX;
-vector<vector<int>> dp(80, vector<int>(1024,-1));
+vector<vector<int>> dp(10, vector<int>(1024,-1));
 
 string to_bin(int cur) {
     string ret = "";
