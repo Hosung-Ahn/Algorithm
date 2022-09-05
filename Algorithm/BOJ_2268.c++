@@ -6,7 +6,7 @@ ll tree[1000000*4] = {0,};
 
 ll sum(int node, int start, int end, int left, int right) {
     // cout << tree[node] << endl;
-    if (start <= left && right <= end) return tree[node];
+    if (left <= start && end <= right) return tree[node];
     if (end < left || right < start) return 0;
 
     int mid = (start+end)/2;
@@ -28,12 +28,20 @@ ll update(int node, int start, int end, int idx, int value) {
     return tree[node];
 }
 
+void swap(int &a, int &b) {
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+
 int main() {
+    `
     int N,M; cin >> N >> M;
     for(int i=0;i<M;i++) {
         int op,a,b; cin >> op >> a >> b;
         if (op == 0) {
-            cout << sum(1, 1, N, a,b) << endl;
+            if (a > b) swap(a,b);
+            cout << sum(1, 1, N, a,b) << "\n";
         }
         else {
             update(1, 1, N, a, b);
