@@ -32,7 +32,7 @@ void solve() {
 
 int main() {
     cin >> N >> M;
-    for(int i=1;i<=M;i++) {
+    for(int i=1;i<=N;i++) {
         int k; cin >> k;
         for(int j=0;j<k;j++) {
             int x; cin >> x;
