@@ -14,7 +14,6 @@ int find_dp(const vector<vector<int>> &arr, int i, int j) {
 
     ret = arr[i][j] + max(find_dp(arr,i+1,j), find_dp(arr,i+1, j+1));
     return ret;
-}
 
 int solution(vector<vector<int>> triangle) {
     for(int i=0;i<MAX;i++) memset(dp[i], -1, sizeof(int)*MAX);
