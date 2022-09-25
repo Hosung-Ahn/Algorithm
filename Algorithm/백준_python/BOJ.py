@@ -3,9 +3,10 @@ from itertools import combinations
 input = stdin.readline
 
 def solve(match) :
-    if match == 15 :
-        return 1
-    
+    if match == 15 : 
+        for i in range(6) :
+            if sum(res[i]) != 0 : return False
+        return True
     t1, t2 = game[match]
     
     for i1,i2 in [[0,2], [1,1], [2,0]] :
@@ -16,9 +17,7 @@ def solve(match) :
             res[t1][i1] += 1
             res[t2][i2] += 1
     return 0
-            
     
-
 game = list(combinations(range(6), 2)) 
 ans = []
 for _ in range(4) :
