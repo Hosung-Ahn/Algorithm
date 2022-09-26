@@ -1,4 +1,7 @@
 import functools
+import sys
+
+sys.setrecursionlimit(100000)
 
 N = int(input())
 board = []
