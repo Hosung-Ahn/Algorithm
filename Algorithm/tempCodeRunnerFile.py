@@ -1,0 +1,2 @@
+ board[r][c] == '*' : return
+    
