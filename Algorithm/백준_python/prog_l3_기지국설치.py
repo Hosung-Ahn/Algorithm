@@ -19,4 +19,4 @@ def solution(n, stations, w):
     return ans
 
 
-print(solution(3,[2],1))
+# print(solution(3,[2],1))

@@ -20,6 +20,5 @@ for i in range(N) :
         if K==2 and i-j != 0 and j!=N-1:
             continue
         ans = max(ans, Sum[j-i])
-    print(Sum)
         
 print(ans)

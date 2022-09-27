@@ -23,7 +23,7 @@ int find_dp(int money) {
 
 bool solve() {
     int N; float ftotal; cin >> N >> ftotal;
-    int total = ftotal*100;
+    int total = ftotal*100 + 0.5;
 
     if (N==0 && total==0) return false;
 
@@ -32,11 +32,10 @@ bool solve() {
 
     for (int i=0;i<N;i++) {
         int c; float fm; cin >> c >> fm;
-        int m = fm*100;
+        int m = fm*100+0.5;
         arr.push_back({m,c});
-        sort(arr.begin(), arr.end());
     }
-
+    sort(arr.begin(), arr.end());
     cout << find_dp(total) << "\n";
     return true;
 }
