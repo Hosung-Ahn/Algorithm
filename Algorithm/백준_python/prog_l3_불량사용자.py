@@ -12,30 +12,34 @@ def cal_bin(arr) :
         ret += 2**i * b
     return ret
 
-def solution(user_id, banned_id):
-    
-    ans = set()
-    visited = [False for _ in range(len(banned_id))]
+
+def solution(user_id, banned_id):   
+    ans = 0
+    ban_visited = [False for _ in range(len(banned_id))]
     selected = [0 for _ in range(len(user_id))]
+    visited = [False for _ in range(1000)]
     
     def dfs(k) :
         nonlocal ans
+        cach = cal_bin(selected)
+        
+        if visited[cach] : return
+        visited[cach] = True
+        
         if k == len(banned_id) : 
-            # print(selected)
-            ans.add(cal_bin(selected))
+            ans += 1
             return
         
         for si, user in enumerate(user_id) :
             for i, ban in enumerate(banned_id) :
-                if visited[i] or selected[si] or not match(user, ban) : continue
+                if ban_visited[i] or selected[si] or not match(user, ban) : continue
                 selected[si] = 1
-                visited[i] = True
+                ban_visited[i] = True
                 dfs(k+1)
-                visited[i] = False
+                ban_visited[i] = False
                 selected[si] = 0
                 
     dfs(0)
-    print(ans)
-    return(len(ans))
+    return(ans)
             
 print(solution(["frodo", "fradi", "crodo", "abc123", "frodoc"], ["*rodo", "*rodo", "******"]))
