@@ -17,7 +17,7 @@ def solution(tickets):
             if dfs() : return True
             arr.pop(-1)
             visited[i] = False 
-        
+        return False
     
     dfs()
     
