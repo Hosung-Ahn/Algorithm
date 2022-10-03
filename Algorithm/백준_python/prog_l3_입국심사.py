@@ -11,10 +11,8 @@ def under_bs(n, times) :
     while lo < hi :
         mid = (lo+hi)//2
         tmp = f(mid, times)
-        if tmp < n :
-            lo = mid + 1
-        else :
-            hi = mid
+        if tmp < n : lo = mid + 1
+        else : hi = mid
     
     return lo
 

@@ -12,6 +12,7 @@ int find_dp(const vector<int> &sticker, int s) {
     if (l<=0) return 0;
     if (l==1) return sticker[s];
     ret = max(sticker[s]+find_dp(sticker,s+2), find_dp(sticker,s+1));
+    return ret;
 }
 
 int solution(vector<int> sticker)
@@ -22,7 +23,7 @@ int solution(vector<int> sticker)
     if (sticker.size() > 1) {
         sticker.pop_back();
         memset(dp, -1, sizeof(int)*MAX);
-        zero_in += find_dp(sticker, 1);
+        zero_in += find_dp(sticker, 2);
     }
     return max(zero_out, zero_in);
 }

@@ -42,9 +42,6 @@ def solution(board):
     
     bfs()
     
-    
     return min(visited[N-1][N-1])
 
-print(solution([[0,1,1],[0,1,1],[0,0,0]]))
-print(solution([[0,0,1],[1,0,1],[1,0,0]]))
       

@@ -15,7 +15,7 @@ def union(a, b) :
     a = get_parent(a)
     b = get_parent(b)
     
-    if arr[a-1] < arr[b-1] :
+    if arr[a-1] < arr[b-1] :    
         S[b] = a
     else :
         S[a] = b
