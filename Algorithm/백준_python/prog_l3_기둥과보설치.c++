@@ -41,14 +41,8 @@ bool can_build_2(int r, int c) {
 bool can_delete_1(int r, int c) {
     bool ret = true;
     board[r][c][1] = false;
-    if (board[r+1][c][1] && !can_build_1(r+1,c)) {
-        cout << "1: " << r << " " << c << endl;
-        ret = false;
-    }
-    if (board[r+1][c][2] && !can_build_2(r+1,c)){
-        ret = false;
-        cout << "2: " << r << " " << c << endl;
-    } 
+    if (board[r+1][c][1] && !can_build_1(r+1,c)) ret = false;
+    if (board[r+1][c][2] && !can_build_2(r+1,c)) ret = false;
     if (c>0 && board[r+1][c-1][2] && !can_build_2(r+1,c-1)) ret = false;
     board[r][c][1] = true;
     return ret;
@@ -57,8 +51,8 @@ bool can_delete_1(int r, int c) {
 bool can_delete_2(int r, int c) {
     bool ret = true;
     board[r][c][2] = false;
-    if (r<N && board[r][c][1] && !can_build_1(r,c)) ret = false;
-    if (r<N && board[r][c+1][1] && !can_build_1(r,c+1)) ret = false;
+    if (board[r][c][1] && !can_build_1(r,c)) ret = false;
+    if (board[r][c+1][1] && !can_build_1(r,c+1)) ret = false;
     if (board[r][c+1][2] && !can_build_2(r,c+1)) ret = false;
     if (c>0 && board[r][c-1][2] && !can_build_2(r,c-1)) ret = false;
     board[r][c][2] = true;
@@ -75,25 +69,12 @@ vector<vector<int>> solution(int n, vector<vector<int>> build_frame) {
         int b = build_frame[i][3];
 
         if (b==1) {
-            if (a==0 && can_build_1(r,c)) {
-                board[r][c][1] = true;
-                cout << c << " " << r << " " << a << endl;
-            }
-            if (a==1 && can_build_2(r,c)) {
-                cout << c << " " << r << " " << a << endl;
-                board[r][c][2] = true;
-            }
+            if (a==0 && can_build_1(r,c)) board[r][c][1] = true;
+            if (a==1 && can_build_2(r,c)) board[r][c][2] = true;
         }
         else {
-            cout << "del prob " << c << " " << r << " " << a << endl;
-            if (a==0 && can_delete_1(r,c)) {
-                board[r][c][1] = false;
-                cout << "del " << c << " " << r << " " << a << endl;
-            }
-            if (a==1 && can_delete_2(r,c)) {
-                board[r][c][2] = false;
-                cout << "del " << c << " " << r << " " << a << endl;
-            }
+            if (a==0 && can_delete_1(r,c)) board[r][c][1] = false;
+            if (a==1 && can_delete_2(r,c)) board[r][c][2] = false;
         }
     }
     vector<Node> arr;
