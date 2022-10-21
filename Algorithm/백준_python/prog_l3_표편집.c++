@@ -21,8 +21,8 @@ void down(int &k, int x) {
 void delete_node(int &k, int n) {
     int left = node[k].first;
     int right = node[k].second;
-    node[left].second = node[k].second;
-    node[right].first = node[k].first;
+    if (left != -1) node[left].second = node[k].second;
+    if (right != n) node[right].first = node[k].first;
     if (right == n) k = node[k].first;
     else k = node[k].second;
 }   
@@ -30,8 +30,8 @@ void delete_node(int &k, int n) {
 void restore_node(int n) {
     int left = node[n].first;
     int right = node[n].second;
-    node[left].second = n;
-    node[right].first = n;
+    if (left != -1) node[left].second = n;
+    if (right != n) node[right].first = n;
 }
 
 string solution(int n, int k, vector<string> cmd) {

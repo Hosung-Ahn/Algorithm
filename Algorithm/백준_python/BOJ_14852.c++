@@ -5,23 +5,18 @@ using namespace std;
 #define ll long long
 ll dp[MAX] = {0,};
 
-ll find_dp(int n) {
-    if (n==1) return 2;
-    else if (n==2) return 7;
-    else if (n==3) return 22;
-
-    ll &ret = dp[n];
-    if (ret != 0) return ret;
-
-    ret += find_dp(n-1)*2;
-    ret += find_dp(n-2)*3;
-    ret += find_dp(n-3)*2;
-    ret %= MOD;
-    
-    return ret; 
-}
-
 int main() {
     int n; cin >> n;
-    cout << find_dp(n); 
+    dp[1] = 2;
+    dp[2] = 7;
+    dp[3] = 22;
+    ll sum = 31;
+    for(int i=4;i<MAX;i++) {
+        dp[i] = sum*2+dp[i-2]+2;
+        dp[i] %= MOD;
+        
+        sum += dp[i];
+        sum %= MOD;
+    }
+    cout << dp[n];
 }

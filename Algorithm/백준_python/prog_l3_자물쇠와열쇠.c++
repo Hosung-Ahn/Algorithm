@@ -18,11 +18,9 @@ bool is_match(const vector<vector<int>> &key, const vector<vector<int>> &lock, i
         for(int j=0-(M-1);j<N+M-1;j++) {
             int cnt = 0;
             for(int r=0;r<M;r++) for(int c=0;c<M;c++) {
-                if (!in_range(i+r,j+c,N) || key[r][c] != 1) {
-                    if (lock[i+r][j+c] == 1) cnt = -987654321;
-                    cnt += 1;
-                }
-                cnt++;
+                if (!in_range(i+r,j+c,N) || key[r][c] != 1) continue;
+                if (lock[i+r][j+c] == 1) cnt = -987654321;
+                cnt+= 1;
             }
             if (cnt == whole) return true;
         }

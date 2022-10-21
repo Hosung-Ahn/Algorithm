@@ -53,7 +53,6 @@ void binary_search() {
 
     while(lo < hi) { 
         int mid = (lo+hi)/2;
-        cout << mid << endl;
         if (!bfs(mid)) lo=mid+1;
         else hi = mid;
     }

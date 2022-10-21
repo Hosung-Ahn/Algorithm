@@ -28,7 +28,7 @@ for _ in range(M) :
     dist[b][a] = 1
     union(a,b)
     
-map(get_parent, SET)
+SET = map(get_parent, SET)
 print(len(set(SET[1:])))
 
 set_arr = [[] for _ in range(N+1)]

@@ -24,17 +24,11 @@ def solution(play_time, adv_time, logs):
     for i in range(1,len(arr)) :
         arr[i] += arr[i-1]
         
-    # for i,x in enumerate(arr) : 
-    #     print(i,x)
-        
-        
     cum_sum = [0 for _ in range(play+3)]
     
     
     for i in range(1,len(cum_sum)) :
         cum_sum[i] += cum_sum[i-1] + arr[i-1]
-    for i,x in enumerate(cum_sum) : 
-        print(i,x)
         
     max_dur = 0
     ans = 0
@@ -45,8 +39,3 @@ def solution(play_time, adv_time, logs):
             max_dur = tmp
             
     return to_string(ans-adv)
-    
-# print(solution("02:03:55", "00:14:15", ["01:20:15-01:45:14", "00:40:31-01:00:00", "00:25:50-00:48:29", "01:30:59-01:53:29", "01:37:44-02:02:30"]))
-print(solution("00:01:00", "00:00:10", ['00:00:20-00:00:30',
-                                        '00:00:25-00:00:35',
-                                        '00:00:30-00:00:40']))
