@@ -3,7 +3,7 @@
 #include <algorithm>
 
 using namespace std;
-#define INF 987654321; 
+#define INF 987654321
 int ans = INF;
 
 int solution(int n, vector<int> weak, vector<int> dist) {
