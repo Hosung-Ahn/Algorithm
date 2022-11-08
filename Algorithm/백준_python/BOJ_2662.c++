@@ -3,42 +3,41 @@
 #include <cstring>
 using namespace std;
 int N,M;
-int money[301][20] = {0,};
-int dp[301][20];
+int dp[301][21];
+int money[301][21];
 int path[301][21];
 
-vector<int> arr;
-
-int find_dp(int idx, int T) {
-    int &ret = dp[T][idx];
+int find_dp(int cur, int T) {
+    int &ret = dp[T][cur];
     if (ret != -1) return ret;
-    if (idx == N) return 0;
+    if (cur == M) return 0;
 
     for(int i=0;i<=T;i++) {
-        int tmp = money[i][idx]+find_dp(idx+1,T-i);
-        if (ret < tmp) {
-            path[T][idx] = i;
+        int tmp = money[i][cur]+find_dp(cur+1, T-i);
+        if(ret < tmp) {
             ret = tmp;
+            path[T][cur] = i;
         }
     }
     return ret;
 }
 
+void trace(int cur, int T) {
+    if (cur == M) return;
+    int ans = path[T][cur];
+    cout << ans << " ";
+    trace(cur+1, T-ans);
+}
+
 int main() {
-    memset(dp,-1,sizeof(dp));
-    memset(path,-1,sizeof(path));
     cin >> N >> M;
     for(int i=0;i<N;i++) {
-        int n; cin >> n;
+        int a; cin >> a;
         for(int j=0;j<M;j++) {
-            cin >> money[n][j];
+            cin >> money[a][j];
         }
     }
-    int ans = find_dp(0,N);
-    cout << ans << endl;
-    int cur = N;
-    for(int i=0;i<M;i++) {
-        cout << path[cur][i] << " ";
-        cur = path[cur - path[cur][i]][i+1];
-    }
+    memset(dp, -1, sizeof(dp));
+    cout << find_dp(0,N) << endl;
+    trace(0,N);
 }
