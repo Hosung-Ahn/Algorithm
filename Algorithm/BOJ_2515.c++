@@ -46,22 +46,12 @@ int find_dp(int idx) {
 void solve() {
     sort(arr.begin(), arr.end(), cmp);
     memset(dp, -1, sizeof(dp));
-    // cout << endl;
-    // for(auto pair : arr) {
-    //     cout << pair.first << " " << pair.second << endl;
-    // }
     int start = under_bound(S);
     if (arr[start].first < S) {
         cout << 0;
         return;
     }
-    // cout << start << endl;
     cout << find_dp(start);
-    // cout << endl;
-
-    // for(int i=0;i<N;i++) {
-    //     cout << dp[i] << " "; 
-    // }
 }
 
 int main() {
