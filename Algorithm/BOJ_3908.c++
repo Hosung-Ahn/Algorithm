@@ -23,10 +23,7 @@ int find_dp(int idx, int k, int n) {
     int &ret = dp[idx][k][n];
     if (ret != -1) return ret;
 
-    if (k == 0) {
-        if (n == 0) return 1;
-        return 0;
-    }
+    if (k == 0) return n == 0 ? 1 : 0;
 
     ret = 0;
     for(int i=idx;i<prime_arr.size();i++) {
