@@ -15,7 +15,6 @@ char solve() {
     int n; cin >> n;
     while(1) {
         int k = find_k(n);
-        cout << k << endl;
 
         if (k==0) {
             if (n==1) return 'm';
@@ -23,10 +22,7 @@ char solve() {
         }
 
         if (arr[k-1]+1 == n) return 'm';
-        else if (arr[k-1]+1 < n && n <= arr[k-1]+k+3) {
-            cout << "hqweqwe";
-            return 'o';
-        }
+        else if (arr[k-1]+1 < n && n <= arr[k-1]+k+3) return 'o';
         else n -= arr[k-1]+k+3;
     }
 }

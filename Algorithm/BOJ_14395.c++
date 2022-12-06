@@ -19,7 +19,6 @@ void bfs(ll start, ll end) {
     while(!q.empty()) {
         Node cur = q.front();
         q.pop();
-        cout << cur.n << " " << cur.s << endl;
         if (cur.n == end) {
             cout << cur.s;
             return;

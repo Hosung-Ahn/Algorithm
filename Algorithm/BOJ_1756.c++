@@ -13,6 +13,8 @@ struct Node {
 };
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
     priority_queue<Node> pq;
     int D,N; cin >> D >> N;
     for(int i=1;i<=D;i++) {

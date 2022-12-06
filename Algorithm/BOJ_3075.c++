@@ -46,6 +46,7 @@ void solve() {
             tmp += (ll)dist[node][meet] * dist[node][meet];
         }
         if (ck) break;
+        
         if (tmp < min_val) {
             res_meet = meet;    
             min_val = tmp;

@@ -13,7 +13,7 @@ int find_dp(int cur, int m) {
     int &ret = dp[cur][m];
     if (ret != -1) return ret;
 
-    if (m < 1) return -INF;
+    if (m < 0) return -INF;
     if (cur == V) return 0;
 
     ret = -INF;
@@ -35,6 +35,6 @@ int main() {
         edges[s].push_back({e,d});
     }
 
-    cout << find_dp(1, M);
+    cout << find_dp(1, M-1);
     
 }

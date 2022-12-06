@@ -25,5 +25,4 @@ int main() {
     }
     sort(arr.begin(), arr.end());
     cout << find_dp(0,0);
-
 }
