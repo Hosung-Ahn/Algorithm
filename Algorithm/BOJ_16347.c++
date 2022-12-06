@@ -4,7 +4,7 @@ using namespace std;
 #define MAX 200000
 #define ll long long
 bool wolf[MAX] = {0,};
-ll cnts[MAX] = {0,};
+int cnts[MAX] = {0,};
 vector<int> edges[MAX];
 
 ll dfs(int cur) {
@@ -12,7 +12,7 @@ ll dfs(int cur) {
     for(int next : edges[cur]) {
         ret += dfs(next);
     }
-    if (wolf[cur]) return max(0, ret-cnts[cur]);
+    if (wolf[cur]) return max((ll)0, ret-cnts[cur]);
     return ret + cnts[cur];
 }
 
