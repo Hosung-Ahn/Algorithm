@@ -43,7 +43,6 @@ void bfs() {
         int cr = q.front().first;
         int cc = q.front().second;
         q.pop(); 
-        cout << cr << " " << cc << endl;
         if (cr == fr && cc == fc) {
             cout << visited[cr][cc];
             return;

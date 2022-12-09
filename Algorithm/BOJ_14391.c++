@@ -37,12 +37,6 @@ int cal_tmp() {
 
 void dfs(int idx) {
     if (idx == R*C) {
-        for(int r=0;r<R;r++) {
-            for(int c=0;c<C;c++) {
-                cout << bin[r][c] << " ";
-            }
-            cout << endl;
-        }
         ans = max(ans, cal_tmp());
         return;
     }
