@@ -1,9 +1,11 @@
 {
     "files.associations": {
+        "*.html": "django-html",
         "utility": "cpp",
         "algorithm": "cpp",
         "ios": "cpp",
         "ostream": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "iostream": "cpp"
     }
 }
