@@ -3,7 +3,7 @@
 #include <cstring>
 using namespace std;
 #define ll long long
-int dp[41];
+ll dp[41];
 string s;
 
 int cal_n(int idx) {
@@ -15,7 +15,7 @@ int cal_n(int idx) {
 }
 
 ll find_dp(int idx) {
-    int &ret = dp[idx];
+    ll &ret = dp[idx];
     if (ret != -1) return ret;
 
     if (s[idx] == '0') return 0;
