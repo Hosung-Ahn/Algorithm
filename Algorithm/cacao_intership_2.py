@@ -19,9 +19,10 @@ def solution(queue1, queue2):
         return -1
     
     while q1_sum != q2_sum :
-        print(1, end='')
-        if len(q1) == 0 or len(q2) == 0 or ans > (len(queue1)+len(queue2)) : return -1
-        
+        if len(q1) == 0 or len(q2) == 0 or ans > len(queue1)*4 : return -1
+        print(q1)
+        print(q2)
+        print()
         ans += 1
         if q1_sum > q2_sum :
             x = q1.popleft()
@@ -37,4 +38,4 @@ def solution(queue1, queue2):
     return ans
             
             
-print(solution([4,5], [6,11]))
+print(solution([1, 1, 1, 1, 1, 1, 1, 1, 1, 9], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))
