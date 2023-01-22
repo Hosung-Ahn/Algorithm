@@ -3,6 +3,7 @@
 #include <algorithm>
 using namespace std;
 #define MAX 1001
+#define ll long long
 int set[MAX];
 
 struct Node {
@@ -33,6 +34,9 @@ bool is_set(int a, int b) {
 }
 
 int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr); cout.tie(nullptr);
+
     int N; cin >> N;
     vector<Node> arr;
     for(int a=1;a<=N;a++) for(int b=1;b<=N;b++) {
@@ -43,7 +47,7 @@ int main() {
 
     for(int n=1;n<=N;n++) set[n]=n;
 
-    int ans = 0;
+    ll ans = 0;
 
     for (Node node : arr) {
         int a = node.a;

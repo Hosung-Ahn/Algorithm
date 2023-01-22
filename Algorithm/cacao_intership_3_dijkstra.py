@@ -22,7 +22,6 @@ def solution(alp, cop, problems):
         cd = cur[0]
         cx = cur[1]
         cy = cur[2]
-        print(cur) 
         
         if dist[cx][cy] < cd : continue 
         

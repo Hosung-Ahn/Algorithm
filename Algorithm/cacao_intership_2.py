@@ -38,4 +38,3 @@ def solution(queue1, queue2):
     return ans
             
             
-print(solution([1, 1, 1, 1, 1, 1, 1, 1, 1, 9], [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]))

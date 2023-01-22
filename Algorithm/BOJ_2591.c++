@@ -17,8 +17,8 @@ int cal_n(int idx) {
 ll find_dp(int idx) {
     ll &ret = dp[idx];
     if (ret != -1) return ret;
-    if (idx == s.size()) return 1;
     if (s[idx] == '0') return 0;
+    if (idx == s.size()) return 1;
     ret = 0;
     if (idx != s.size()-1 && cal_n(idx) <= 34) {
         ret += find_dp(idx+2);
