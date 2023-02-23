@@ -8,11 +8,13 @@ arr = list(map(int, input().split()))
 dp = [-2000 for _ in range(MAX)]
 
 def find_dp(idx) :
+    if idx == 0 : return arr[idx]
+    
     ret = dp[idx]
     if ret != -2000 : return ret
     
     ret = arr[idx]
-    if idx > 0 and find_dp(idx-1) > 0 : ret += find_dp(idx-1)
+    if find_dp(idx-1) > 0 : ret += find_dp(idx-1)
     dp[idx] = ret
     return ret
 
