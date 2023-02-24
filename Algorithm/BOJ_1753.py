@@ -9,6 +9,8 @@ S = int(input())
 edges = [[] for _ in range(MAX)]
 dist = [INF for _ in range(MAX)]
 
+next
+
 def dijkstra(start) :
     dist[start] = 0
     q = []
