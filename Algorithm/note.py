@@ -1,70 +1,46 @@
 from collections import deque
 
-def get_fish():
-  ret = []
-  for i in range(n):
-    for j in range(n):
-      if state[i][j] != 0 and state[i][j] < shark:
-        ret.append([i, j])
-  return ret
-
-def bfs(r, c):
+def bfs():
   q = deque()
-  q.append((r, c))
-  distance[r][c] = 0
+  q.append((0, 0, 0))
+  graph[0][0] = 1
 
   while q:
-    row, col = q.popleft()
+    r, c, b = q.popleft()
 
     for i in range(4):
-      if row + dr[i] >= 0 and col + dc[i] >= 0 and row + dr[i] < n and col + dc[i] < n:
-        nr = row + dr[i]
-        nc = col + dc[i]
-        if state[nr][nc] <= shark and distance[nr][nc] == -1:
-          q.append((nr, nc))
-          distance[nr][nc] = distance[row][col] + 1
+      if r + dr[i] < n and c + dc[i] < m and r + dr[i] >= 0 and c + dc[i] >= 0:
+        nr = r + dr[i]
+        nc = c + dc[i]
+        if graph[nr][nc] == 1:
+          if nr == 0 and nc == 0: continue
 
-dr = [-1, 0, 1, 0]
-dc = [0, -1, 0, 1]
+          if b != 0: continue
+          else:
+            q.append((nr, nc, 1))
+            graph[nr][nc] = graph[r][c] + 1
 
-n = int(input())
+        if graph[nr][nc] == 0:
+          if b != 0:
+            q.append((nr, nc, 1))
+          else:
+            q.append((nr, nc, 0))
+          graph[nr][nc] = graph[r][c] + 1
 
-state = []
+        
+n, m = map(int, input().split())
+graph = []
 for _ in range(n):
-  state.append(list(map(int, input().split())))
+  lst = list(map(int, list(input())))
+  graph.append(lst)
 
-shark = 2
-dist = 0
-count = 0
-position = []
+dr = [0, 1, 0, -1]
+dc = [1, 0, -1, 0]
 
-for i in range(n):
-  for j in range(n):
-    if state[i][j] == 9:
-      state[i][j] = 0
-      position = [i, j]
-      break
-  if position != []: break
+bfs()
 
-while True:
-  fish = get_fish()
-  if fish == []:
-    break
-
-  distance = [[-1] * n for _ in range(n)]
-  bfs(position[0], position[1])
-
-  for f in fish:
-    f.append(distance[f[0]][f[1]])
-  fish.sort(key = lambda x : (x[2], x[0], x[1]))
-
-  dist += fish[0][2]
-  state[fish[0][0]][fish[0][1]] = 0
-  count += 1
-  if count == shark:
-    shark += 1
-    count = 0
-
-  position = [fish[0][0], fish[0][1]]
-
-print(dist)
+result = graph[n - 1][m - 1]
+if result == 0:
+  print(-1)
+else:
+  print(result)
